@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+	font-family: 'Montserrat', sans-serif !important;
+}
+
+.jumbotron {
+	background-color: #FDAB00 !important;
+	height: 300px;
+	padding-top: 10px !important;
+}
+.header {
+	color: #000;
+	text-align: center;
+}
+
+.schedule-header {
+	background-color: #FDAB00 !important;
+}
+
+.form-header {
+	background-color: #FDAB00 !important;
+	color: #000;
+}
+
+.button-add {
+	background-color: #FDAB00;
+}
