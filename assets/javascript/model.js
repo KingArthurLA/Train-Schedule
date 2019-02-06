@@ -21,9 +21,9 @@ let controller = {
 
 
 	nextArrival: () => {
-		var trainDepartureCoverted = moment(trainDeparture, "hh:mm").subtract(1, 'years');
+		var trainDepartureConverted = moment(trainDeparture, "hh:mm").subtract(1, 'years');
 		var currentTime = moment();
-		var diffTime = moment().diff(moment(trainDepartureCoverted), "minutes");
+		var diffTime = moment().diff(moment(trainDepartureConverted), "minutes");
 		var timeRemainder = diffTime % trainFrequency;
 		var timeInMinutesTillTrain = trainFrequency - timeRemainder;
 		nextTrain = moment().add(timeInMinutesTillTrain, 'minutes');
@@ -31,16 +31,18 @@ let controller = {
 	},
 
 	minutesAway: () => {
-		var trainDepartureCoverted = moment(trainDeparture, "hh:mm").subtract(1, 'years');
+		var trainDepartureConverted = moment(trainDeparture, "hh:mm").subtract(1, 'years');
 		var currentTime = moment();
-		var diffTime = moment().diff(moment(trainDepartureCoverted), "minutes");
+		var diffTime = moment().diff(moment(trainDepartureConverted), "minutes");
 		var timeRemainder = diffTime % trainFrequency;
 		minutesAway = trainFrequency - timeRemainder;
 		minutesAway = moment().startOf('day').add(minutesAway, 'minutes').format('HH:mm');
+		minutesAway = moment.duration(minutesAway).asMinutes();
 		return moment(minutesAway).format('HH:mm');
 	},
 	convertFrequency: () => {
-		trainFrequency = moment().startOf('day').add(trainFrequency, 'minutes').format('mm');
+		trainFrequency = moment().startOf('day').add(trainFrequency, 'minutes').format('HH:mm');
+		trainFrequency = moment.duration(trainFrequency).asMinutes();
 	}
 
 };
